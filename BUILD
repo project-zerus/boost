@@ -1,6 +1,26 @@
 import sys
 
 cc_library(
+  name = 'boost',
+  deps = [
+    ':chrono',
+    ':cpp-netlib',
+    ':filesystem',
+    ':iostreams',
+    ':regex',
+    ':system',
+    ':thread',
+  ]
+)
+
+cc_library(
+  name = 'boost_headers',
+  export_incs = [
+    '.',
+  ]
+)
+
+cc_library(
   name = 'chrono',
   warning = 'no',
   srcs = [
@@ -15,9 +35,9 @@ cc_library(
 )
 
 cc_library(
-  name = 'boost_headers',
-  export_incs = [
-    '.',
+  name = 'cpp-netlib',
+  deps = [
+    '//thirdparty/cpp-netlib-0.11.0-final:cpp-netlib'
   ]
 )
 
