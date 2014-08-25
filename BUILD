@@ -5,6 +5,7 @@ cc_library(
   deps = [
     ':chrono',
     ':cpp-netlib',
+    ':date_time',
     ':filesystem',
     ':iostreams',
     ':regex',
@@ -38,6 +39,20 @@ cc_library(
   name = 'cpp-netlib',
   deps = [
     '//thirdparty/cpp-netlib-0.11.0-final:cpp-netlib'
+  ]
+)
+
+cc_library(
+  name = 'date_time',
+  srcs = [
+    'libs/date_time/src/gregorian/date_generators.cpp',
+    'libs/date_time/src/gregorian/greg_month.cpp',
+    'libs/date_time/src/gregorian/gregorian_types.cpp',
+    'libs/date_time/src/gregorian/greg_weekday.cpp',
+    'libs/date_time/src/posix_time/posix_time_types.cpp',
+  ],
+  deps = [
+    ':system'
   ]
 )
 
