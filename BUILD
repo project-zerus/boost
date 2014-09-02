@@ -23,7 +23,6 @@ cc_library(
 
 cc_library(
   name = 'chrono',
-  warning = 'no',
   srcs = [
     'libs/chrono/src/chrono.cpp',
     'libs/chrono/src/process_cpu_clocks.cpp',
@@ -58,7 +57,9 @@ cc_library(
 
 cc_library(
   name = 'filesystem',
-  warning = 'no',
+  extra_cppflags = [
+    '-Wno-overloaded-virtual',
+  ],
   srcs = [
     'libs/filesystem/src/codecvt_error_category.cpp',
     'libs/filesystem/src/operations.cpp',
@@ -87,7 +88,7 @@ cc_library(
   deps = [
     ':boost_headers',
     '//thirdparty/bzip2:bz2',
-    '//thirdparty/zlib:zlib',
+    '//zlib:zlib',
   ]
 )
 
@@ -95,6 +96,9 @@ python_version = str(sys.version_info[0]) + "." + str(sys.version_info[1])
 
 cc_library(
   name = 'python',
+  extra_cppflags = [
+    '-Wno-strict-aliasing',
+  ],
   srcs = [
     'libs/python/src/converter/arg_to_python_base.cpp',
     'libs/python/src/converter/builtin_converters.cpp',
@@ -159,7 +163,6 @@ cc_library(
 
 cc_library(
   name = 'system',
-  warning = 'no',
   srcs = [
     'libs/system/src/error_code.cpp',
   ],
@@ -171,7 +174,6 @@ cc_library(
 
 cc_library(
   name = 'thread',
-  warning = 'no',
   srcs = [
     'libs/thread/src/future.cpp',
     'libs/thread/src/tss_null.cpp',
