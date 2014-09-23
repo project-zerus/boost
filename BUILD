@@ -37,7 +37,7 @@ cc_library(
 cc_library(
   name = 'cpp-netlib',
   deps = [
-    '//thirdparty/cpp-netlib-0.11.0-final:cpp-netlib'
+    '//cpp-netlib:cpp-netlib'
   ]
 )
 
