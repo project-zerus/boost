@@ -11,6 +11,8 @@ cc_library(
     ':regex',
     ':system',
     ':thread',
+    ':context',
+    ':coroutine',
   ]
 )
 
@@ -177,6 +179,7 @@ cc_library(
   srcs = [
     'libs/thread/src/future.cpp',
     'libs/thread/src/tss_null.cpp',
+    'libs/thread/src/pthread/once.cpp',
     'libs/thread/src/pthread/once_atomic.cpp',
     'libs/thread/src/pthread/thread.cpp',
   ],
@@ -185,4 +188,38 @@ cc_library(
     ':boost_headers',
     ':system',
   ],
+)
+
+cc_library(
+  name = 'coroutine',
+  srcs = [
+    'libs/coroutine/src/exceptions.cpp',
+    'libs/coroutine/src/detail/coroutine_context.cpp',
+    'libs/coroutine/src/posix/stack_traits.cpp',
+  ],
+  deps = [
+    ':boost_headers',
+    ':thread',
+    ':context',
+    ':system',
+  ],
+)
+
+boost_context_srcs = []
+
+if build_target.arch == 'x86_64':
+  boost_context_srcs = [
+    'libs/context/src/asm/jump_x86_64_sysv_elf_gas_.s',
+    'libs/context/src/asm/jump_x86_64_sysv_macho_gas_.s',
+    'libs/context/src/asm/make_x86_64_sysv_elf_gas_.s',
+    'libs/context/src/asm/make_x86_64_sysv_macho_gas_.s',
+  ]
+
+cc_library(
+  name = 'context',
+  warning = 'no',
+  srcs = boost_context_srcs,
+  deps = [
+    ':boost_headers',
+  ]
 )
