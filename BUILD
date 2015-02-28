@@ -11,8 +11,6 @@ cc_library(
     ':regex',
     ':system',
     ':thread',
-    ':context',
-    ':coroutine',
   ]
 )
 
@@ -179,7 +177,6 @@ cc_library(
   srcs = [
     'libs/thread/src/future.cpp',
     'libs/thread/src/tss_null.cpp',
-    'libs/thread/src/pthread/once.cpp',
     'libs/thread/src/pthread/once_atomic.cpp',
     'libs/thread/src/pthread/thread.cpp',
   ],
