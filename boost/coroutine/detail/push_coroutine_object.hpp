@@ -292,6 +292,8 @@ public:
         stack_alloc_( stack_alloc)
     {}
 
+    virtual ~push_coroutine_object() {}
+
     void run()
     {
         BOOST_ASSERT( ! base_t::unwind_requested() );

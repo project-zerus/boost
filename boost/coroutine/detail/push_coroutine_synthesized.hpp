@@ -66,6 +66,8 @@ public:
         impl_t( caller, callee, unwind, preserve_fpu)
     {}
 
+    virtual ~push_coroutine_synthesized() {}
+
     void destroy() {}
 };
 
