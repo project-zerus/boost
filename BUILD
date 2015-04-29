@@ -1,42 +1,48 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_library(
-  name = "boost",
-  deps = [
-    ":atomic",
-    ":chrono",
-    ":date_time",
-    ":filesystem",
-    ":regex",
-    ":system",
-    ":thread",
-  ]
-)
-
-cc_library(
   name = "atomic",
+  deps = [
+    ":system",
+  ],
   srcs = [
     "libs/atomic/src/lockpool.cpp",
+  ],
+  defines = [
+    "BOOST_ALL_STATIC_LINK=1"
   ],
   includes = [
     ".",
   ],
+  alwayslink = 1,
+  linkstatic = 1,
 )
 
 cc_library(
   name = "chrono",
+  deps = [
+    ":system",
+  ],
   srcs = [
     "libs/chrono/src/chrono.cpp",
     "libs/chrono/src/process_cpu_clocks.cpp",
     "libs/chrono/src/thread_clock.cpp"
   ],
+  defines = [
+    "BOOST_ALL_STATIC_LINK=1"
+  ],
   includes = [
     ".",
   ],
+  alwayslink = 1,
+  linkstatic = 1,
 )
 
 cc_library(
   name = "date_time",
+  deps = [
+    ":system",
+  ],
   srcs = [
     "libs/date_time/src/gregorian/date_generators.cpp",
     "libs/date_time/src/gregorian/greg_month.cpp",
@@ -44,13 +50,21 @@ cc_library(
     "libs/date_time/src/gregorian/greg_weekday.cpp",
     "libs/date_time/src/posix_time/posix_time_types.cpp",
   ],
+  defines = [
+    "BOOST_ALL_STATIC_LINK=1"
+  ],
   includes = [
     ".",
   ],
+  alwayslink = 1,
+  linkstatic = 1,
 )
 
 cc_library(
   name = "filesystem",
+  deps = [
+    ":system",
+  ],
   srcs = [
     "libs/filesystem/src/codecvt_error_category.cpp",
     "libs/filesystem/src/operations.cpp",
@@ -61,13 +75,21 @@ cc_library(
     "libs/filesystem/src/utf8_codecvt_facet.cpp",
     "libs/filesystem/src/windows_file_codecvt.cpp",
   ],
+  defines = [
+    "BOOST_ALL_STATIC_LINK=1"
+  ],
   includes = [
     ".",
   ],
+  alwayslink = 1,
+  linkstatic = 1,
 )
 
 cc_library(
   name = "regex",
+  deps = [
+    ":system",
+  ],
   srcs = [
     "libs/regex/src/cpp_regex_traits.cpp",
     "libs/regex/src/cregex.cpp",
@@ -87,9 +109,14 @@ cc_library(
     "libs/regex/src/wide_posix_api.cpp",
     "libs/regex/src/winstances.cpp",
   ],
+  defines = [
+    "BOOST_ALL_STATIC_LINK=1"
+  ],
   includes = [
     ".",
   ],
+  alwayslink = 1,
+  linkstatic = 1,
 )
 
 cc_library(
@@ -97,13 +124,21 @@ cc_library(
   srcs = [
     "libs/system/src/error_code.cpp",
   ],
+  defines = [
+    "BOOST_ALL_STATIC_LINK=1"
+  ],
   includes = [
     ".",
   ],
+  alwayslink = 1,
+  linkstatic = 1,
 )
 
 cc_library(
   name = "thread",
+  deps = [
+    ":system",
+  ],
   srcs = [
     "libs/thread/src/future.cpp",
     "libs/thread/src/tss_null.cpp",
@@ -113,4 +148,9 @@ cc_library(
   includes = [
     ".",
   ],
+  defines = [
+    "BOOST_ALL_STATIC_LINK=1"
+  ],
+  alwayslink = 1,
+  linkstatic = 1,
 )
