@@ -1,3 +1,5 @@
+licenses(['notice'])
+
 package(default_visibility = ["//visibility:public"])
 
 cc_library(
@@ -115,6 +117,9 @@ cc_library(
   includes = [
     ".",
   ],
+  linkopts = [
+    '-pthread',
+  ],
   alwayslink = 1,
   linkstatic = 1,
 )
@@ -150,6 +155,9 @@ cc_library(
   ],
   defines = [
     "BOOST_ALL_STATIC_LINK=1"
+  ],
+  linkopts = [
+    '-pthread',
   ],
   alwayslink = 1,
   linkstatic = 1,
