@@ -7,6 +7,7 @@ cc_library(
   deps = [
     ':atomic',
     ':chrono',
+    ':context',
     ':date_time',
     ':filesystem',
     ':regex',
@@ -48,6 +49,22 @@ cc_library(
     'libs/chrono/src/chrono.cpp',
     'libs/chrono/src/process_cpu_clocks.cpp',
     'libs/chrono/src/thread_clock.cpp'
+  ],
+  defines = [
+    'BOOST_ALL_STATIC_LINK=1'
+  ],
+  includes = [
+    '.',
+  ],
+  alwayslink = 1,
+  linkstatic = 1,
+)
+
+cc_library(
+  name = 'context',
+  srcs = [
+    'libs/context/src/asm/jump_x86_64_sysv_elf_gas.S',
+    'libs/context/src/asm/make_x86_64_sysv_elf_gas.S',
   ],
   defines = [
     'BOOST_ALL_STATIC_LINK=1'
