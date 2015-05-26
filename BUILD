@@ -2,6 +2,13 @@ licenses(['notice'])
 
 package(default_visibility = ['//visibility:public'])
 
+config_setting(
+  name = 'darwin',
+  values = {
+    'cpu': 'darwin',
+  }
+)
+
 cc_library(
   name = 'boost',
   deps = [
@@ -18,6 +25,7 @@ cc_library(
     'boost/*.h',
   ]),
   srcs = [
+    'empty.cc'
   ],
   linkstatic = 1,
 )
@@ -62,10 +70,16 @@ cc_library(
 
 cc_library(
   name = 'context',
-  srcs = [
-    'libs/context/src/asm/jump_x86_64_sysv_elf_gas.S',
-    'libs/context/src/asm/make_x86_64_sysv_elf_gas.S',
-  ],
+  srcs = select({
+    ':darwin': [
+      'libs/context/src/asm/jump_combined_sysv_macho_gas.S',
+      'libs/context/src/asm/make_combined_sysv_macho_gas.S',
+    ],
+    '//conditions:default': [
+      'libs/context/src/asm/jump_x86_64_sysv_elf_gas.S',
+      'libs/context/src/asm/make_x86_64_sysv_elf_gas.S',
+    ],
+  }),
   defines = [
     'BOOST_ALL_STATIC_LINK=1'
   ],
