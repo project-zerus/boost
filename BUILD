@@ -207,9 +207,7 @@ boost_context_srcs = []
 if build_target.arch == 'x86_64':
   boost_context_srcs = [
     'libs/context/src/asm/jump_x86_64_sysv_elf_gas_.s',
-    'libs/context/src/asm/jump_x86_64_sysv_macho_gas_.s',
     'libs/context/src/asm/make_x86_64_sysv_elf_gas_.s',
-    'libs/context/src/asm/make_x86_64_sysv_macho_gas_.s',
   ]
 
 cc_library(
