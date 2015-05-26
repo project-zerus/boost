@@ -167,15 +167,15 @@ cc_library(
   includes = [
     '.',
   ],
-  linkopts = [
-    '-pthread',
-  ],
   alwayslink = 1,
   linkstatic = 1,
 )
 
 cc_library(
   name = 'system',
+  deps = [
+    '//external:pthread',
+  ],
   srcs = [
     'libs/system/src/error_code.cpp',
   ],
@@ -205,9 +205,6 @@ cc_library(
   ],
   defines = [
     'BOOST_ALL_STATIC_LINK=1'
-  ],
-  linkopts = [
-    '-pthread',
   ],
   alwayslink = 1,
   linkstatic = 1,
