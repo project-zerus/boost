@@ -129,6 +129,10 @@ cc_library(
   export_incs = [
     '.',
   ],
+  deps = [
+    '#rt',
+    '#dl',
+  ],
 )
 
 cc_library(
