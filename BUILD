@@ -22,7 +22,9 @@ cc_library(
     ':thread',
   ],
   hdrs = glob([
-    'boost/*.h',
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
   ]),
   srcs = [
     'empty.cc'
@@ -35,6 +37,11 @@ cc_library(
   deps = [
     ':system',
   ],
+  hdrs = glob([
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
+  ]),
   srcs = [
     'libs/atomic/src/lockpool.cpp',
   ],
@@ -53,6 +60,11 @@ cc_library(
   deps = [
     ':system',
   ],
+  hdrs = glob([
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
+  ]),
   srcs = [
     'libs/chrono/src/chrono.cpp',
     'libs/chrono/src/process_cpu_clocks.cpp',
@@ -70,6 +82,11 @@ cc_library(
 
 cc_library(
   name = 'context',
+  hdrs = glob([
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
+  ]),
   srcs = select({
     ':darwin': [
       'libs/context/src/asm/jump_combined_sysv_macho_gas.S',
@@ -95,6 +112,12 @@ cc_library(
   deps = [
     ':system',
   ],
+  hdrs = glob([
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
+    'libs/date_time/src/gregorian/greg_names.hpp',
+  ]),
   srcs = [
     'libs/date_time/src/gregorian/date_generators.cpp',
     'libs/date_time/src/gregorian/greg_month.cpp',
@@ -117,6 +140,11 @@ cc_library(
   deps = [
     ':system',
   ],
+  hdrs = glob([
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
+  ]),
   srcs = [
     'libs/filesystem/src/codecvt_error_category.cpp',
     'libs/filesystem/src/operations.cpp',
@@ -142,6 +170,12 @@ cc_library(
   deps = [
     ':system',
   ],
+  hdrs = glob([
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
+    'libs/regex/src/internals.hpp',
+  ]),
   srcs = [
     'libs/regex/src/cpp_regex_traits.cpp',
     'libs/regex/src/cregex.cpp',
@@ -176,6 +210,11 @@ cc_library(
   deps = [
     '//external:pthread',
   ],
+  hdrs = glob([
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
+  ]),
   srcs = [
     'libs/system/src/error_code.cpp',
   ],
@@ -194,6 +233,12 @@ cc_library(
   deps = [
     ':system',
   ],
+  hdrs = glob([
+    'boost/**/*.h',
+    'boost/**/*.hpp',
+    'boost/**/*.ipp',
+    'libs/thread/src/pthread/timeconv.inl',
+  ]),
   srcs = [
     'libs/thread/src/future.cpp',
     'libs/thread/src/tss_null.cpp',
