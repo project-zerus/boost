@@ -76,6 +76,10 @@ cc_library(
   includes = [
     '.',
   ],
+  linkopts = [
+    '-lrt',
+    '-ldl',
+  ],
   alwayslink = 1,
   linkstatic = 1,
 )
